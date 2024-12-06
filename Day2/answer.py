@@ -45,26 +45,34 @@ def check_safeness(levels):
             diff = r[r.current+1] - r[r.current]
             if abs(diff) > 3 or diff == 0:
                 if warning:
+                    #print("Fail: Difference out of range")
                     break
                 warning = True
                 r.remove(r.current+1)
+                #print("Warning: Difference out of range")
                 continue
             if inc and diff < 0:
                 if warning:
+                    #print("Fail: Switched from inc to dec")
                     break
                 r.remove(r.current+1)
                 warning = True
+                #print("Warning: Switched from inc to dec")
                 continue
             elif not inc and diff > 0:
                 if warning:
+                    #print("Fail: Switched from dec to inc")
                     break
                 r.remove(r.current+1)
                 warning = True
+                #print("Warning: Switched from dec to inc")
                 continue
             if r.current == len(r) - 2:
                 safe += 1
+                #print("Pass")
                 break
             next(r)
+            
             
     return safe
                 
@@ -75,8 +83,12 @@ def parse_input():
     return l
 
 def main():
+    #test = [[9,5,1,5],
+    #         [1,2,3,4],
+    #         [-3,-7,-6,-2],
+    #         [1,3,6,12,9],
+    #         [2,2,4,6,8,10,10]]
     levels = parse_input()
-    print(len(levels))
     print(check_safeness(levels))
 
 
