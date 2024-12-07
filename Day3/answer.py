@@ -14,11 +14,14 @@ def parse_input():
     return l
 
 def multiply(input):
-    input_str = re.findall("mul\(\d+,\d+\)", input)
+    do = re.findall("do\(\)[^d]+(?!on't\(\))", input)
     total = 0
-    for s in input_str:
-        ops = re.findall("\d+", s)
-        total += int(ops[0]) * int(ops[1])
+    for sub in do:
+        input_str = re.findall("mul\(\d+,\d+\)", sub)
+        #print(l_to_str(input_str))
+        for s in input_str:
+            ops = re.findall("\d+", s)
+            total += int(ops[0]) * int(ops[1])
     return total
 
 def main():
