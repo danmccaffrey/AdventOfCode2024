@@ -49,6 +49,7 @@ def check_safeness(levels):
                     break
                 warning = True
                 r.remove(r.current+1)
+                r.current -= 1
                 #print("Warning: Difference out of range")
                 continue
             if inc and diff < 0:
@@ -56,6 +57,7 @@ def check_safeness(levels):
                     #print("Fail: Switched from inc to dec")
                     break
                 r.remove(r.current+1)
+                r.current -= 1
                 warning = True
                 #print("Warning: Switched from inc to dec")
                 continue
@@ -64,6 +66,7 @@ def check_safeness(levels):
                     #print("Fail: Switched from dec to inc")
                     break
                 r.remove(r.current+1)
+                r.current -= 1
                 warning = True
                 #print("Warning: Switched from dec to inc")
                 continue
